@@ -7,8 +7,9 @@ const connect = function () {
     port: 50541// PORT number here,
   });
 
-  conn.on('connection',()=>{
+  conn.on('connect',()=>{
     console.log("connected")
+    conn.write("Name: MDM") 
   })
 
   // interpret incoming data as text
