@@ -6,12 +6,12 @@ const setupInput = function(conn) {
   stdin.setRawMode(true);
   stdin.setEncoding('utf8');
   stdin.resume();
-  stdin.on('data',(key)=>handleUserInput(key))
+  stdin.on('data',(input)=>handleUserInput(input))
   
   return stdin;
 }
-const handleUserInput=function(key){
-  switch (key){
+const handleUserInput=function(input){
+  switch (input){
     case '\u0003':
       console.log('ctrl+c pressed, exit')
       process.exit();
@@ -28,7 +28,14 @@ const handleUserInput=function(key){
     case 's':
       connection.write('Move: down')
       break;
+    case 'l':
+      connection.write('Say: Name Mark')
+      break;
+    case 'b':
+      connection.write('Say: I am Best!')
+      break;
   }
+
  
 }
 module.exports={setupInput}
